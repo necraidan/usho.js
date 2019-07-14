@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Unicorn Showtime</title>
+    <style type="text/css">
+      img {
+        max-width: 100%;
+        max-height: 500px;
+      }
+
+      .slide {
+        position: absolute;
+        left: 0px;
+        width: 1200px;
+        height: 700px;
+        background-color: pink;
+        transition: left 0.5s ease-out;
+      }
+
+      .past {
+        /*animation: slide 0.5s forwards;*/
+        left: -1200px;
+      }
+
+      .future {
+        left: 1200px;
+      }
+
+      /*       @keyframes slide {
+        100% {
+          left: -1200px;
+        }
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="slide" style="z-index: 1">
+        <h1>Bonjour h1</h1>
+        <h2>Bonjour h2</h2>
+        <h3>Bonjour h3</h3>
+        <p>Corps de texte</p>
+        <img src="https://images.unsplash.com/photo-1533918838523-8d9df152b200?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1660&q=80" />
+      </section>
+      <section class="slide future">
+        <h1>Bonjour h1</h1>
+        <p>
+          Corps de texte
+          <img src="https://images.unsplash.com/photo-1533918838523-8d9df152b200?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1660&q=80" />
+        </p>
+      </section>
+    </div>
+    <script>
+      let slide = document.querySelectorAll('.slide')[0];
+      let slide2 = document.querySelectorAll('.slide')[1];
+      document.addEventListener('keydown', event => {
+        console.log(event.key);
+        if (event.key === 'ArrowRight') {
+          slide.classList.add('past');
+          slide2.classList.remove('future');
+        } else if (event.key === 'ArrowLeft') {
+          slide.classList.remove('past');
+          slide2.classList.add('future');
+        }
+      });
+    </script>
+  </body>
+</html>
